@@ -18,14 +18,16 @@ return new class extends Migration
             $table->id();
             //1st method
             // $table->bigInteger('camp_id')->unsigned();
-            // $table->unsignedBigInteger('camp_id');
+            $table->unsignedBigInteger('camp_id');
 
             // 2nd method
-            $table->foreignId('camp_id')->constrained();
+            // $table->bigInteger('camp_id')->constrained();
             $table->string('name');
             $table->timestamps();
-
-            $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
+            $table->foreign('camp_id')->
+                    references('id')
+                    ->on('camps')
+                    ->onDelete('cascade');
         });
     }
 
